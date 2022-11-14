@@ -5,9 +5,9 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver
         </property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/jdbc?serverTimezone=UTC</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/5sp?serverTimezone=UTC</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">212109</property>
-        <mapping resource="AddressBook.hbm.xml"/>
+        <property name="hibernate.connection.password">0214</property>
+        <mapping resource="Student.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

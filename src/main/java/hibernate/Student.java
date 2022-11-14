@@ -2,37 +2,37 @@ package hibernate;
 
 import java.io.Serializable;
 
-public class AddressBook implements Serializable {
+public class Student implements Serializable {
     private Integer id;
 
     private Integer age;
 
-    private String country;
+    private String university;
     private String firstName;
     private String secondName;
     private String phoneNumber;
     private String email;
 
-    public AddressBook(Integer age, String country, String firstName, String secondName, String phoneNumber, String email) {
+    public Student(Integer age, String university, String firstName, String secondName, String phoneNumber, String email) {
         this.age = age;
-        this.country = country;
+        this.university = university;
         this.firstName = firstName;
         this.secondName = secondName;
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
 
-    public AddressBook(Integer id, Integer age, String country, String firstName, String secondName, String phoneNumber, String email) {
+    public Student(Integer id, Integer age, String university, String firstName, String secondName, String phoneNumber, String email) {
         this.id = id;
         this.age = age;
-        this.country = country;
+        this.university = university;
         this.firstName = firstName;
         this.secondName = secondName;
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
 
-    public AddressBook() {
+    public Student() {
 
     }
 
@@ -52,12 +52,12 @@ public class AddressBook implements Serializable {
         this.age = age;
     }
 
-    public String getCountry() {
-        return country;
+    public String getUniversity() {
+        return university;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setUniversity(String university) {
+        this.university = university;
     }
 
     public String getFirstName() {
@@ -97,7 +97,7 @@ public class AddressBook implements Serializable {
         return "AddressBook{" +
                 "id=" + id +
                 ", age=" + age +
-                ", country='" + country + '\'' +
+                ", university='" + university + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +

@@ -2,7 +2,7 @@
         "-//Hibernate/Hibernate Mapping DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="hibernate.AddressBook" table="addressbook">
+    <class name="hibernate.Student" table="student">
         <meta attribute="class-description">This class
             contains developer's details.
         </meta>
@@ -10,7 +10,7 @@
             <generator class="native"/>
         </id>
         <property name="age" column="age" type="int"/>
-        <property name="country" column="country" type="java.lang.String"/>
+        <property name="university" column="university" type="java.lang.String"/>
         <property name="firstName" column="name" type="java.lang.String"/>
         <property name="secondName" column="surname" type="java.lang.String"/>
         <property name="email" column="email" type="java.lang.String"/>

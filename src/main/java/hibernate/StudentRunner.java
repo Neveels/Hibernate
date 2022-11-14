@@ -8,13 +8,13 @@ import org.hibernate.cfg.Configuration;
 import java.util.List;
 import java.util.Scanner;
 
-public class AddressBookRunner {
+public class StudentRunner {
     private static SessionFactory sessionFactory;
 
     public static void main(String[] args) {
         sessionFactory = new Configuration().configure().buildSessionFactory();
 
-        AddressBookRunner addressBookRunner = new AddressBookRunner();
+        StudentRunner studentRunner = new StudentRunner();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -22,38 +22,40 @@ public class AddressBookRunner {
             menu();
             int value = scanner.nextInt();
             switch (value) {
-                case 1 -> addressBookRunner.listAddressBook().forEach(System.out::println);
-                case 2 -> addressBookRunner.addAddressBook("Ilya", "Ignatovich", "Finland", "neevels@mail.ru", "+375297694430", 20);
-                case 3 -> addressBookRunner.updateAddressBook(1,38);
-                case 4 -> addressBookRunner.removeAddressBook(2);
-                default -> {return;}
+                case 1 -> studentRunner.listAddressBook().forEach(System.out::println);
+                case 2 -> studentRunner.addAddressBook("Ilya", "Ignatovich", "Finland", "neevels@mail.ru", "+375297694430", 20);
+                case 3 -> studentRunner.updateAddressBook(4, 38);
+                case 4 -> studentRunner.removeAddressBook(2);
+                default -> {
+                    return;
+                }
 
             }
         }
 
     }
 
-    public void addAddressBook(String name, String surname, String country, String email, String phoneNumber, int age) {
+    public void addAddressBook(String name, String surname, String university, String email, String phoneNumber, int age) {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
-        AddressBook addressBook = new AddressBook(1, age, country, name, surname, phoneNumber, email);
+        Student addressBook = new Student(1, age, university, name, surname, phoneNumber, email);
         session.save(addressBook);
         transaction.commit();
         session.close();
     }
 
-    public List<AddressBook> listAddressBook() {
+    public List<Student> listAddressBook() {
         Session session = this.sessionFactory.openSession();
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
-        List<AddressBook> addressBooks = session.createQuery("FROM AddressBook").list();
+        List<Student> students = session.createQuery("from Student", Student.class).getResultList();
 
         transaction.commit();
         session.close();
-        return addressBooks;
+        return students;
     }
 
     public void updateAddressBook(int id, int age) {
@@ -61,9 +63,9 @@ public class AddressBookRunner {
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
-        AddressBook addressBook = (AddressBook) session.get(AddressBook.class, id);
-        addressBook.setAge(age);
-        session.update(addressBook);
+        Student student = (Student) session.get(Student.class, id);
+        student.setAge(age);
+        session.update(student);
         transaction.commit();
         session.close();
     }
@@ -73,8 +75,8 @@ public class AddressBookRunner {
         Transaction transaction = null;
 
         transaction = session.beginTransaction();
-        AddressBook addressBook = (AddressBook) session.get(AddressBook.class, id);
-        session.delete(addressBook);
+        Student student = (Student) session.get(Student.class, id);
+        session.delete(student);
         transaction.commit();
         session.close();
     }
